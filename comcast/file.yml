@@ -1,0 +1,11 @@
+# This playbook will help us to use file module
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: understand file module
+      file:
+        path: /etc/create_file
+        state: directory
+        mode: 0755
+  

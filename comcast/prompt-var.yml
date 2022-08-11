@@ -1,0 +1,36 @@
+# This Playbook deploys PHP application to desired Servers
+# This playbook also helps us to understand "SERVICE HANDLERS"
+# This Playbook will also help us to learn "Variables"
+# This Playbook will also help us to learn "PROMPT VARIABLES"
+---
+- hosts: production
+  become: true
+
+  vars:
+    app_dest: "/var/www/html/index.php"   
+    path_ini: "/etc/php/7.4/cli/php.ini"
+
+  vars_prompt:
+    - name: "upload_var"
+      prompt: "Do you want to upload PHP Application?" 
+    - name: "conf_php"
+      prompt: "Do you want to create PHP Page"
+
+  tasks:
+    - name: Lets Upload PHP application
+      copy:
+        src: index.php
+        dest: "{{ app_dest }}"
+        mode: 0755 
+      when: upload_var == 'yes'  
+      notify: restart apache2 
+      
+    - name: Configure php.ini file
+      lineinfile:
+        path: "{{ path_ini }}"
+        regexp: ^short_open_tag
+        line: 'short_open_tag-On'
+      when: conf_php == 'aye'   
+  handlers:      
+    - name: restart apache2
+      service: name=apache2 state=started 

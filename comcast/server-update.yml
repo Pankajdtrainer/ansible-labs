@@ -1,0 +1,11 @@
+# This playbook will help us to learn "delegate_to" or "local_action"
+---
+- hosts: all
+  #  gather_facts: no
+  become: true
+  tasks:
+    - name: This task updates worker machines
+      apt: name=* state=latest
+      #      delegate_to: comcast-vm2.uaenorth.cloudapp.azure.com
+
+

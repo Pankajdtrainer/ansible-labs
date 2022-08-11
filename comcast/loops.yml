@@ -1,0 +1,26 @@
+# This YAML helps us to understand LOOPs.
+# With Items will do the same work as Loop
+---
+- hosts: development
+  become: true
+  tasks:
+    - name: Create new users
+      user:
+        name: '{{ item }}'
+        state: present
+#      loop:
+      with_items:
+         - comcast-user1
+         - comcast-user2
+         - comcast-user3
+         - comcast-user4
+         - comcast-user5
+         - comcast-user6
+#         - comcast-user1
+
+
+
+
+
+        
+

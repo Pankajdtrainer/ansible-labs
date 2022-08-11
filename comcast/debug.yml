@@ -1,0 +1,22 @@
+# This playbook will help us to learn debug module
+# Debug module helps us to print lines to Standard Output(stdout)
+# Lets Learn Register as well
+# with Verbose Option
+---
+- hosts: all
+  name: use debug module
+  #  debugger: always
+  vars:
+    comp_name: Microsoft
+    Greetings: Hello!!!
+  tasks:
+    - name: Get system uptime
+      shell: uptime -p
+      register: system_uptime
+    - name: Lets print system_uptime
+      debug:
+        msg: "System uptime for server was:  {{ system_uptime }}"
+        verbosity: 4
+    - name: print lines 
+      debug:
+        msg: "{{ Greetings }} {{ comp_name  }} Folks, Happy Learning Keep Learning"

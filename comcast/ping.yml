@@ -1,0 +1,7 @@
+# This playbook will PING all the servers
+---
+- hosts: all
+  name: First-Play
+  tasks:
+  - name: This task will ping target servers
+    action: ping

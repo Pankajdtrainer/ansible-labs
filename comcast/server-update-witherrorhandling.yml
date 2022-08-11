@@ -1,0 +1,22 @@
+# This playbook updates worker machines
+---
+- hosts: all
+# Become gives root permissions to update worker machines
+  become: true
+  tasks:
+    - name: This task updates worker machines
+      apt: name=* state=latest
+      args:
+        warn: no
+  tasks:
+    - name: check status of apache2
+      command: service apache2 status
+      args:
+        warn: no
+      changed_when: false
+  tasks:
+    - name: this task will fail
+      command: /bin/false1
+      ignore_errors: yes
+
+

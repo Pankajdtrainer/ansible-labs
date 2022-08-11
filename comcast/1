@@ -1,0 +1,10 @@
+# This playbook updates worker machines
+---
+- hosts: all
+# Become gives root permissions to update worker machines
+  become: true
+  tasks:
+    - name: This task updates worker machines
+      apt: name=* state=latest
+
+

@@ -1,0 +1,6 @@
+# This playbook is congregate playbook to merge/execute all PHP
+# applications playbooks together 
+---
+  - import_playbook: server-update.yml
+  - import_playbook: install-services.yml
+  - import_playbook: setup-application.yml

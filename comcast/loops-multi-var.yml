@@ -1,0 +1,31 @@
+# This YAML helps us to understand LOOPs with multi variables
+---
+- hosts: development
+  become: true
+  tasks:
+    - name: Create new users
+      user:
+        name: '{{ item.name }}'
+        uid: '{{ item.uid }}'
+        state: present
+
+      loop:
+         - name: comcast-user1
+           uid: 1010
+         - name: comcast-user2
+           uid: 1011
+         - name: comcast-user3
+           uid: 1012 
+           # We can also define loop values as mentioned below
+#     loop:           
+#        - { name: comcast-user1 , uid: 1010 } 
+#        - { name: comcast-user1 , uid: 1010 }
+#        - { name: comcast-user1 , uid: 1010 }
+
+
+
+
+
+
+        
+

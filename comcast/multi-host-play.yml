@@ -1,0 +1,17 @@
+# This playbook has multiple PLAYs
+---
+# This is first PLAY
+- hosts: production
+  name: First Play of the playbook
+  tasks:
+  - name: This task will ping target servers
+    action: ping
+  - name: This task will give me OS of my worker machines
+    shell: uname
+# This is second PLAY
+- hosts: development
+  name: Second Play of the playbook
+  tasks:
+  - name: This task will do apt-get update
+    apt: name=* state=latest
+

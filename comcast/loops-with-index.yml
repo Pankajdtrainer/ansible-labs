@@ -1,0 +1,17 @@
+# This YAML helps us to understand LOOPs with indexing 
+---
+- hosts: development
+  become: true
+  tasks:
+    - name: Lets learn with indexing
+      debug:
+        msg: "Day information at {{ item.0 }} is {{ item.1 }} "
+      with_indexed_items:
+        - "Sunday" 
+        - "Monday"
+        - "Tuesday"
+        - "Wednesday"
+        - "Thursday"
+        - "Friday"
+        - "Saturday"       
+

@@ -1,0 +1,16 @@
+# serial host execution help us to run play one by one 
+# to host servers as compare to single execution in all servers
+# with percentage
+---
+- hosts: all
+  become: yes
+  serial: 
+  - 1
+  - 40%
+  - 50%
+  tasks:
+    - name: install elinks
+      package:
+        name: elinks
+        state: latest
+

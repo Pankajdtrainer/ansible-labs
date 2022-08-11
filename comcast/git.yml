@@ -1,0 +1,10 @@
+# This playbook will help us to use GIT module
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: understand GIT module
+      git:
+        repo: https://github.com/Pankajdtrainer/salesforce-git.git
+        dest: /src/salesforce-git
+

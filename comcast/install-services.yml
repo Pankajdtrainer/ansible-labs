@@ -1,0 +1,27 @@
+# Lets Install reauired Services(PHP, Apache) for our application
+---
+- hosts: development
+  name: Install apache
+  become: true
+  tasks: 
+    - name: lets install apache
+      apt: name=apache2 state=latest update_cache=true
+    - name: Lets start apache
+      service: name=apache2 state=started
+- hosts: production
+  name: Install PHP & apache
+  become: true
+  tasks:
+    - name: Lets install php & apache
+      apt:
+        name:
+          - php
+          - apache2
+        state: present
+        update_cache: true
+    - name: Lets start apache
+      service: name=apache2 state=started enabled=yes
+
+
+
+

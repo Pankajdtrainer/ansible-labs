@@ -1,0 +1,16 @@
+# Lets understand Asynchronous Execution of tasks in Playbook
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Lets copy Shell Script
+      copy:
+        src: sleep.sh
+        dest: /root/comcast/sleep.sh
+        mode: 0755
+    - name: Lets run Shell Script
+      command: /root/comcast/sleep.sh
+      async: 100
+
+
+

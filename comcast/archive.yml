@@ -1,0 +1,11 @@
+# This playbook will help us to use Archive module
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: understand Archive module
+      archive:
+        path: /root/comcast
+        dest: /src/handson-ansible.tgz
+
+
